@@ -1,10 +1,9 @@
 import pandas as pd
 from scipy.stats import zscore
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-voest_df = pd.DataFrame(pd.read_csv('TL0.DE.csv'))
-tesla_df = pd.DataFrame(pd.read_csv('VOE.VI.csv'))
+tesla_df = pd.DataFrame(pd.read_csv('TL0.DE.csv'))
+voest_df = pd.DataFrame(pd.read_csv('VOE.VI.csv'))
 
 pd.set_option('display.max_columns', None)
 

@@ -123,6 +123,8 @@ df_combined = pd.concat([
 plt.figure(figsize=(10, 6))
 sns.violinplot(x='Line', y='Production Time', data=df_combined)
 
+print(df_combined)
+
 plt.title('Production Time Distribution by Line')
 plt.xlabel('Production Line')
 plt.ylabel('Production Time')
