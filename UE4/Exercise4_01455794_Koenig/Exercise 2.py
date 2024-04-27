@@ -9,7 +9,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
 
 #import Data
 # Read csv
@@ -144,6 +145,19 @@ plt.show()
 #Soft Clustering: Each data point has a probability of belonging to each (vs. Kmeans where every point belongs to exactly one value)
 # of the clusters rather than being hard-assigned, allowing for more nuanced interpretations.
 
+#0.8/0.9 is a very high probability that the data point belongs to the cluster
+def print_probabilities (data, row):
+    probabilities = gmm.predict_proba(data)
+
+    # Calculate the cluster membership probabilities for n row
+    row_probabilities = probabilities[row]
+    print(f"Cluster membership probabilities for row {row}:")
+
+    # Iterate over the probabilities to print them in a more readable format
+    clusters = range(1, len(row_probabilities) + 1)
+    for cluster, prob in zip(clusters, row_probabilities):
+        print(f"Cluster_GMM {cluster}: {prob:.4f}")  # Using .4f to format the float for better readability
+
 
 # Standardizing the data
 scaler = StandardScaler()
@@ -177,6 +191,7 @@ print(f"Mean Variance for g={gmm.n_components}: {mean_variance}")
 # Print the hub locations
 print("GMM Cluster Centers (Latitude, Longitude):")
 print(hub_centers_gmm)
+print_probabilities(uber_scaled, 0)
 
 # Plotting the clusters
 plt.figure(figsize=(10, 8))
@@ -222,6 +237,7 @@ print(f"Mean Variance for g={gmm.n_components}: {mean_variance}")
 # Print the hub locations
 print("GMM Cluster Centers (Latitude, Longitude):")
 print(hub_centers_gmm)
+print_probabilities(uber_scaled, 127)
 
 # Plotting the clusters
 plt.figure(figsize=(10, 8))
@@ -265,6 +281,7 @@ print(f"Mean Variance for g={gmm.n_components}: {mean_variance}")
 # Print the hub locations
 print("GMM Cluster Centers (Latitude, Longitude):")
 print(hub_centers_gmm)
+print_probabilities(uber_scaled, 1713)
 
 # Plotting the clusters
 plt.figure(figsize=(10, 8))

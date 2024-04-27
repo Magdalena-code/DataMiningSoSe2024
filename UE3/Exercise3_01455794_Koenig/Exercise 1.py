@@ -55,14 +55,13 @@ def check_column_values(df):
 
     # Check categorical variables with specific expected categories
     vacation_categories = ['below average', 'average', 'generous']
+    # Drop columns that have an unexpected value.
     if not set(df['vacation'].dropna().unique()).issubset(vacation_categories):
         print(f"Column 'vacation' had unexpected values.")
 
-
-    # Check outcome variable 'consent' for any unexpected values
+    # Drop columns that have an unexpected value.
     consent_categories = ['good', 'bad']
     if not set(df['consent'].dropna().unique()).issubset(consent_categories):
-        # Replace unexpected values with the most common valid value
         print(f"Column 'consent' had unexpected values.")
 
     print("Check complete.")
@@ -200,7 +199,7 @@ print("Average Recall:", np.mean(recall_scores))
 
 
 
-# With SMOTE - SMOT creates synthetic training data for the underrepresented groups
+# With SMOTE - SMOTE creates synthetic training data for the underrepresented groups
 
 print("With SMOTE:")
 for i in range(n_runs):
