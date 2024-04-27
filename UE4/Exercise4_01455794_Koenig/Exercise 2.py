@@ -1,4 +1,4 @@
-#done togethere with Thomas Hollin
+#done in cooperation with Thomas Hollin
 
 from sklearn.mixture import GaussianMixture
 from sklearn.preprocessing import StandardScaler
@@ -166,6 +166,14 @@ hub_centers_gmm = scaler.inverse_transform(hub_centers)
 print(f"Lower bound on the log-likelihood for g={gmm.n_components}: {gmm.lower_bound_}")
 print(f"Number of iterations for g={gmm.n_components}: {gmm.n_iter_}")
 
+#help of chatgpt
+covariances = gmm.covariances_
+# Compute variances from the diagonal of each covariance matrix
+variances = [np.diag(cov) for cov in covariances]
+# Calculate the mean variance over all features and clusters
+mean_variance = np.mean(np.hstack(variances))
+print(f"Mean Variance for g={gmm.n_components}: {mean_variance}")
+
 # Print the hub locations
 print("GMM Cluster Centers (Latitude, Longitude):")
 print(hub_centers_gmm)
@@ -202,6 +210,14 @@ hub_centers_gmm = scaler.inverse_transform(hub_centers)
 # and the lower to number of interactions the the more efficient.
 print(f"Lower bound on the log-likelihood for g={gmm.n_components}: {gmm.lower_bound_}")
 print(f"Number of iterations for g={gmm.n_components}: {gmm.n_iter_}")
+#help of chatgpt
+covariances = gmm.covariances_
+# Compute variances from the diagonal of each covariance matrix
+variances = [np.diag(cov) for cov in covariances]
+# Calculate the mean variance over all features and clusters
+mean_variance = np.mean(np.hstack(variances))
+print(f"Mean Variance for g={gmm.n_components}: {mean_variance}")
+
 
 # Print the hub locations
 print("GMM Cluster Centers (Latitude, Longitude):")
@@ -238,6 +254,13 @@ hub_centers_gmm = scaler.inverse_transform(hub_centers)
 # and the lower to number of interactions the the more efficient.
 print(f"Lower bound on the log-likelihood for g={gmm.n_components}: {gmm.lower_bound_}")
 print(f"Number of iterations for g={gmm.n_components}: {gmm.n_iter_}")
+
+covariances = gmm.covariances_
+# Compute variances from the diagonal of each covariance matrix
+variances = [np.diag(cov) for cov in covariances]
+# Calculate the mean variance over all features and clusters
+mean_variance = np.mean(np.hstack(variances))
+print(f"Mean Variance for g={gmm.n_components}: {mean_variance}")
 
 # Print the hub locations
 print("GMM Cluster Centers (Latitude, Longitude):")
